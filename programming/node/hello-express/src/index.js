@@ -31,6 +31,15 @@ app.get("/about", (req, res) => {
     res.render("about", {say: randomSay});
 });
 
+app.get("/reqhead", (req, res) => {
+    var s = "";
+    for (var c in req.headers) {
+        s += c + " -> " + req.headers[c] + "\n";
+    }
+    res.type("text/plain");
+    res.send(s);
+});
+
 app.use( (req, res) => {
     // res.type("text/plain");
     res.status(404);

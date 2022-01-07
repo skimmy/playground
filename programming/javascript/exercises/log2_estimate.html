@@ -1,0 +1,26 @@
+<html>
+	<head>
+		<title>Javascript implementation of log2 estimate [ML73]</title>
+		<script type="text/javascript">
+			function estimateLog2() {
+				var x = parseInt(document.getElementById("x-input").value, 10);
+				var y = Math.log2(x);
+				console.log("x: " + x + " y: " + y);
+				document.getElementById("result").innerHTML = "y = " + y;
+			}
+		</script>
+	</head>
+	<body>
+		<div id="main-container">
+			<h1>Estimate log2</h1>
+	
+			<label>x</label>
+			<input type="text" name="x" id="x-input" />
+			<input type="submit" name="Start" onClick="estimateLog2()">
+		
+			<p id="result">
+				y =  
+			</p>
+		</div>
+	</body>
+</html>

@@ -3,24 +3,40 @@
 		<title>Javascript implementation of log2 estimate [ML73]</title>
 		<script type="text/javascript">
 			function estimateLog2() {
-				var x = parseInt(document.getElementById("x-input").value, 10);
-				var y = Math.log2(x);
-				console.log("x: " + x + " y: " + y);
-				document.getElementById("result").innerHTML = "y = " + y;
+				// parseInt(num, base)
+				let x = parseFloat(document.getElementById("x-input").value);
+				if (isNaN(x)) {
+					console.log("NaN input");
+					document.getElementById("result").innerHTML = "Error: NaN input";	
+				} else {
+					let y = Math.log2(x);
+					console.log("x: " + x + " y: " + y);
+					document.getElementById("result").innerHTML = "log2(x) = " + y;
+				}
+			}
+			function init() {
+				document.getElementById("x-input").placeholder = "x";
+				document.getElementById("result").innerHTML = "log2(x) = ";
 			}
 		</script>
 	</head>
-	<body>
+	<body onLoad="init()">
 		<div id="main-container">
-			<h1>Estimate log2</h1>
-	
-			<label>x</label>
-			<input type="text" name="x" id="x-input" />
-			<input type="submit" name="Start" onClick="estimateLog2()">
-		
-			<p id="result">
-				y =  
-			</p>
+			<div id="calculator-div">
+				<h1>Estimate log2</h1>
+				<label>x</label>
+				<input type="text" name="x" id="x-input" />
+				<input type="submit" name="Start" onClick="estimateLog2()">
+				<p id="result"></p>
+			</div>
+			<div id="reference-div">
+				<h2>References</h2>
+				<ul>
+					<li><a href="https://doi.org/10.1109/PROC.1973.9318" alt="[ML73]">
+						[ML73] - A note on base-2 logarithm computations
+					</a></li>
+				</ul>
+			</div>
 		</div>
 	</body>
 </html>

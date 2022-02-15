@@ -2,6 +2,20 @@
 	<head>
 		<title>Javascript implementation of log2 estimate [ML73]</title>
 		<script type="text/javascript">
+			function iterative_alg(a, n=100) {
+				let y = 0;
+				let d = 1;
+				for (i = 0; i < n; i++) {
+					d = 0.5*d;
+					if (a >= Math.sqrt(2)) {
+						y += d;
+						a = 0.5*(a*a);
+					} else {
+						a = a*a;
+					}
+				}
+				return y;
+			}
 			function estimateLog2() {
 				// parseInt(num, base)
 				let x = parseFloat(document.getElementById("x-input").value);
@@ -10,7 +24,9 @@
 					document.getElementById("result").innerHTML = "Error: NaN input";	
 				} else {
 					let y = Math.log2(x);
+					let yt = iterative_alg(x)
 					console.log("x: " + x + " y: " + y);
+					console.log("yt " + yt);
 					document.getElementById("result").innerHTML = "log2(x) = " + y;
 				}
 			}
